@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GestionEvenementModelStoreContainer" CdmEntityContainer="GestionEvenementEntities">
+    <EntitySetMapping Name="Adresse">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.Adresse)">
+        <MappingFragment StoreEntitySet="Adresse">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Rue" ColumnName="Rue" />
+          <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evenement">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.Evenement)">
+        <MappingFragment StoreEntitySet="Evenement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+          <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+          <ScalarProperty Name="Duree" ColumnName="Duree" />
+          <ScalarProperty Name="DateLimiteInscription" ColumnName="DateLimiteInscription" />
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+          <ScalarProperty Name="IdTrancheAge" ColumnName="IdTrancheAge" />
+          <ScalarProperty Name="IdAdresse" ColumnName="IdAdresse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InscriptionUserEvenement">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.InscriptionUserEvenement)">
+        <MappingFragment StoreEntitySet="InscriptionUserEvenement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateResa" ColumnName="DateResa" />
+          <ScalarProperty Name="Remarque" ColumnName="Remarque" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="IdEvenement" ColumnName="IdEvenement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paiement">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.Paiement)">
+        <MappingFragment StoreEntitySet="Paiement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Montant" ColumnName="Montant" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+          <ScalarProperty Name="DatePaiement" ColumnName="DatePaiement" />
+          <ScalarProperty Name="PaiementAJour" ColumnName="PaiementAJour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaiementUserResa">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.PaiementUserResa)">
+        <MappingFragment StoreEntitySet="PaiementUserResa">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="IdPaiement" ColumnName="IdPaiement" />
+          <ScalarProperty Name="IdInscriptionUserEvenement" ColumnName="IdInscriptionUserEvenement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planning">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.Planning)">
+        <MappingFragment StoreEntitySet="Planning">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Horaire" ColumnName="Horaire" />
+          <ScalarProperty Name="EstDispo" ColumnName="EstDispo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanningUserEvent">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.PlanningUserEvent)">
+        <MappingFragment StoreEntitySet="PlanningUserEvent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPlanning" ColumnName="IdPlanning" />
+          <ScalarProperty Name="IdInscriptionUserEvenement" ColumnName="IdInscriptionUserEvenement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.Role)">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrancheAge">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.TrancheAge)">
+        <MappingFragment StoreEntitySet="TrancheAge">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+          <ScalarProperty Name="AgeMin" ColumnName="AgeMin" />
+          <ScalarProperty Name="AgeMax" ColumnName="AgeMax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.Type)">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(GestionEvenementModel.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="DateAdhesion" ColumnName="DateAdhesion" />
+          <ScalarProperty Name="IdTrancheAge" ColumnName="IdTrancheAge" />
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+          <ScalarProperty Name="IdAdresse" ColumnName="IdAdresse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

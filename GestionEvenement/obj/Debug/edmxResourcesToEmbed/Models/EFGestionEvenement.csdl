@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GestionEvenementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adresse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Numero" Type="Int32" />
+    <Property Name="Rue" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="CodePostal" Type="Int32" />
+    <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Evenement" Relationship="Self.FK__Evenement__IdAdr__4222D4EF" FromRole="Adresse" ToRole="Evenement" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Users__IdAdresse__3B75D760" FromRole="Adresse" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Evenement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DateDebut" Type="DateTime" Precision="0" />
+    <Property Name="DateFin" Type="DateTime" Precision="0" />
+    <Property Name="Duree" Type="Int32" />
+    <Property Name="DateLimiteInscription" Type="DateTime" Precision="0" />
+    <Property Name="IdType" Type="Int32" />
+    <Property Name="IdTrancheAge" Type="Int32" />
+    <Property Name="IdAdresse" Type="Int32" />
+    <NavigationProperty Name="Adresse" Relationship="Self.FK__Evenement__IdAdr__4222D4EF" FromRole="Evenement" ToRole="Adresse" />
+    <NavigationProperty Name="TrancheAge" Relationship="Self.FK__Evenement__IdTra__412EB0B6" FromRole="Evenement" ToRole="TrancheAge" />
+    <NavigationProperty Name="Type" Relationship="Self.FK__Evenement__IdTyp__403A8C7D" FromRole="Evenement" ToRole="Type" />
+    <NavigationProperty Name="InscriptionUserEvenement" Relationship="Self.FK__Inscripti__IdEve__45F365D3" FromRole="Evenement" ToRole="InscriptionUserEvenement" />
+  </EntityType>
+  <EntityType Name="InscriptionUserEvenement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateResa" Type="DateTime" Precision="0" />
+    <Property Name="Remarque" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IdUser" Type="Int32" />
+    <Property Name="IdEvenement" Type="Int32" />
+    <NavigationProperty Name="Evenement" Relationship="Self.FK__Inscripti__IdEve__45F365D3" FromRole="InscriptionUserEvenement" ToRole="Evenement" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Inscripti__IdUse__44FF419A" FromRole="InscriptionUserEvenement" ToRole="Users" />
+    <NavigationProperty Name="PaiementUserResa" Relationship="Self.FK__PaiementU__IdIns__4CA06362" FromRole="InscriptionUserEvenement" ToRole="PaiementUserResa" />
+    <NavigationProperty Name="PlanningUserEvent" Relationship="Self.FK__PlanningU__IdIns__52593CB8" FromRole="InscriptionUserEvenement" ToRole="PlanningUserEvent" />
+  </EntityType>
+  <EntityType Name="Paiement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Montant" Type="Int32" />
+    <Property Name="Libelle" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="DatePaiement" Type="DateTime" Precision="0" />
+    <Property Name="PaiementAJour" Type="Boolean" />
+    <NavigationProperty Name="PaiementUserResa" Relationship="Self.FK__PaiementU__IdPai__4BAC3F29" FromRole="Paiement" ToRole="PaiementUserResa" />
+  </EntityType>
+  <EntityType Name="PaiementUserResa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUser" Type="Int32" />
+    <Property Name="IdPaiement" Type="Int32" />
+    <Property Name="IdInscriptionUserEvenement" Type="Int32" />
+    <NavigationProperty Name="InscriptionUserEvenement" Relationship="Self.FK__PaiementU__IdIns__4CA06362" FromRole="PaiementUserResa" ToRole="InscriptionUserEvenement" />
+    <NavigationProperty Name="Paiement" Relationship="Self.FK__PaiementU__IdPai__4BAC3F29" FromRole="PaiementUserResa" ToRole="Paiement" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__PaiementU__IdUse__4AB81AF0" FromRole="PaiementUserResa" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Planning">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Horaire" Type="Int32" />
+    <Property Name="EstDispo" Type="Boolean" />
+    <NavigationProperty Name="PlanningUserEvent" Relationship="Self.FK__PlanningU__IdPla__5165187F" FromRole="Planning" ToRole="PlanningUserEvent" />
+  </EntityType>
+  <EntityType Name="PlanningUserEvent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IdPlanning" Type="Int32" />
+    <Property Name="IdInscriptionUserEvenement" Type="Int32" />
+    <NavigationProperty Name="InscriptionUserEvenement" Relationship="Self.FK__PlanningU__IdIns__52593CB8" FromRole="PlanningUserEvent" ToRole="InscriptionUserEvenement" />
+    <NavigationProperty Name="Planning" Relationship="Self.FK__PlanningU__IdPla__5165187F" FromRole="PlanningUserEvent" ToRole="Planning" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Users__IdRole__3A81B327" FromRole="Role" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="TrancheAge">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AgeMin" Type="Int32" />
+    <Property Name="AgeMax" Type="Int32" />
+    <NavigationProperty Name="Evenement" Relationship="Self.FK__Evenement__IdTra__412EB0B6" FromRole="TrancheAge" ToRole="Evenement" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Users__IdTranche__398D8EEE" FromRole="TrancheAge" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Evenement" Relationship="Self.FK__Evenement__IdTyp__403A8C7D" FromRole="Type" ToRole="Evenement" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateNaissance" Type="DateTime" Precision="0" />
+    <Property Name="Genre" Type="Boolean" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telephone" Type="Int32" />
+    <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DateAdhesion" Type="DateTime" Precision="0" />
+    <Property Name="IdTrancheAge" Type="Int32" />
+    <Property Name="IdRole" Type="Int32" />
+    <Property Name="IdAdresse" Type="Int32" />
+    <NavigationProperty Name="Adresse" Relationship="Self.FK__Users__IdAdresse__3B75D760" FromRole="Users" ToRole="Adresse" />
+    <NavigationProperty Name="InscriptionUserEvenement" Relationship="Self.FK__Inscripti__IdUse__44FF419A" FromRole="Users" ToRole="InscriptionUserEvenement" />
+    <NavigationProperty Name="PaiementUserResa" Relationship="Self.FK__PaiementU__IdUse__4AB81AF0" FromRole="Users" ToRole="PaiementUserResa" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__Users__IdRole__3A81B327" FromRole="Users" ToRole="Role" />
+    <NavigationProperty Name="TrancheAge" Relationship="Self.FK__Users__IdTranche__398D8EEE" FromRole="Users" ToRole="TrancheAge" />
+  </EntityType>
+  <Association Name="FK__Evenement__IdAdr__4222D4EF">
+    <End Role="Adresse" Type="Self.Adresse" Multiplicity="0..1" />
+    <End Role="Evenement" Type="Self.Evenement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adresse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evenement">
+        <PropertyRef Name="IdAdresse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__IdAdresse__3B75D760">
+    <End Role="Adresse" Type="Self.Adresse" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adresse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="IdAdresse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Evenement__IdTra__412EB0B6">
+    <End Role="TrancheAge" Type="Self.TrancheAge" Multiplicity="0..1" />
+    <End Role="Evenement" Type="Self.Evenement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrancheAge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evenement">
+        <PropertyRef Name="IdTrancheAge" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Evenement__IdTyp__403A8C7D">
+    <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+    <End Role="Evenement" Type="Self.Evenement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evenement">
+        <PropertyRef Name="IdType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inscripti__IdEve__45F365D3">
+    <End Role="Evenement" Type="Self.Evenement" Multiplicity="0..1" />
+    <End Role="InscriptionUserEvenement" Type="Self.InscriptionUserEvenement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Evenement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InscriptionUserEvenement">
+        <PropertyRef Name="IdEvenement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inscripti__IdUse__44FF419A">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="InscriptionUserEvenement" Type="Self.InscriptionUserEvenement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InscriptionUserEvenement">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaiementU__IdIns__4CA06362">
+    <End Role="InscriptionUserEvenement" Type="Self.InscriptionUserEvenement" Multiplicity="0..1" />
+    <End Role="PaiementUserResa" Type="Self.PaiementUserResa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InscriptionUserEvenement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaiementUserResa">
+        <PropertyRef Name="IdInscriptionUserEvenement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PlanningU__IdIns__52593CB8">
+    <End Role="InscriptionUserEvenement" Type="Self.InscriptionUserEvenement" Multiplicity="0..1" />
+    <End Role="PlanningUserEvent" Type="Self.PlanningUserEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InscriptionUserEvenement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PlanningUserEvent">
+        <PropertyRef Name="IdInscriptionUserEvenement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaiementU__IdPai__4BAC3F29">
+    <End Role="Paiement" Type="Self.Paiement" Multiplicity="0..1" />
+    <End Role="PaiementUserResa" Type="Self.PaiementUserResa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paiement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaiementUserResa">
+        <PropertyRef Name="IdPaiement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaiementU__IdUse__4AB81AF0">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="PaiementUserResa" Type="Self.PaiementUserResa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaiementUserResa">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PlanningU__IdPla__5165187F">
+    <End Role="Planning" Type="Self.Planning" Multiplicity="0..1" />
+    <End Role="PlanningUserEvent" Type="Self.PlanningUserEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planning">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PlanningUserEvent">
+        <PropertyRef Name="IdPlanning" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__IdRole__3A81B327">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__IdTranche__398D8EEE">
+    <End Role="TrancheAge" Type="Self.TrancheAge" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrancheAge">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="IdTrancheAge" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GestionEvenementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adresse" EntityType="Self.Adresse" />
+    <EntitySet Name="Evenement" EntityType="Self.Evenement" />
+    <EntitySet Name="InscriptionUserEvenement" EntityType="Self.InscriptionUserEvenement" />
+    <EntitySet Name="Paiement" EntityType="Self.Paiement" />
+    <EntitySet Name="PaiementUserResa" EntityType="Self.PaiementUserResa" />
+    <EntitySet Name="Planning" EntityType="Self.Planning" />
+    <EntitySet Name="PlanningUserEvent" EntityType="Self.PlanningUserEvent" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="TrancheAge" EntityType="Self.TrancheAge" />
+    <EntitySet Name="Type" EntityType="Self.Type" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK__Evenement__IdAdr__4222D4EF" Association="Self.FK__Evenement__IdAdr__4222D4EF">
+      <End Role="Adresse" EntitySet="Adresse" />
+      <End Role="Evenement" EntitySet="Evenement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__IdAdresse__3B75D760" Association="Self.FK__Users__IdAdresse__3B75D760">
+      <End Role="Adresse" EntitySet="Adresse" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Evenement__IdTra__412EB0B6" Association="Self.FK__Evenement__IdTra__412EB0B6">
+      <End Role="TrancheAge" EntitySet="TrancheAge" />
+      <End Role="Evenement" EntitySet="Evenement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Evenement__IdTyp__403A8C7D" Association="Self.FK__Evenement__IdTyp__403A8C7D">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Evenement" EntitySet="Evenement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inscripti__IdEve__45F365D3" Association="Self.FK__Inscripti__IdEve__45F365D3">
+      <End Role="Evenement" EntitySet="Evenement" />
+      <End Role="InscriptionUserEvenement" EntitySet="InscriptionUserEvenement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inscripti__IdUse__44FF419A" Association="Self.FK__Inscripti__IdUse__44FF419A">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="InscriptionUserEvenement" EntitySet="InscriptionUserEvenement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaiementU__IdIns__4CA06362" Association="Self.FK__PaiementU__IdIns__4CA06362">
+      <End Role="InscriptionUserEvenement" EntitySet="InscriptionUserEvenement" />
+      <End Role="PaiementUserResa" EntitySet="PaiementUserResa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PlanningU__IdIns__52593CB8" Association="Self.FK__PlanningU__IdIns__52593CB8">
+      <End Role="InscriptionUserEvenement" EntitySet="InscriptionUserEvenement" />
+      <End Role="PlanningUserEvent" EntitySet="PlanningUserEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaiementU__IdPai__4BAC3F29" Association="Self.FK__PaiementU__IdPai__4BAC3F29">
+      <End Role="Paiement" EntitySet="Paiement" />
+      <End Role="PaiementUserResa" EntitySet="PaiementUserResa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaiementU__IdUse__4AB81AF0" Association="Self.FK__PaiementU__IdUse__4AB81AF0">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PaiementUserResa" EntitySet="PaiementUserResa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PlanningU__IdPla__5165187F" Association="Self.FK__PlanningU__IdPla__5165187F">
+      <End Role="Planning" EntitySet="Planning" />
+      <End Role="PlanningUserEvent" EntitySet="PlanningUserEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__IdRole__3A81B327" Association="Self.FK__Users__IdRole__3A81B327">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__IdTranche__398D8EEE" Association="Self.FK__Users__IdTranche__398D8EEE">
+      <End Role="TrancheAge" EntitySet="TrancheAge" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

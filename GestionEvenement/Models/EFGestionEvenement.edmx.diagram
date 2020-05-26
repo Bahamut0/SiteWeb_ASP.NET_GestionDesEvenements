@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="03d437cdcb1d4d8183187cb4ed83e2d1" Name="Diagram1">
+        <EntityTypeShape EntityType="GestionEvenementModel.Adresse" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.Evenement" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.InscriptionUserEvenement" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.Paiement" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.PaiementUserResa" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.Planning" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.PlanningUserEvent" Width="1.5" PointX="10.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.Role" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.TrancheAge" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.Type" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionEvenementModel.Users" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="GestionEvenementModel.FK__Evenement__IdAdr__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__Users__IdAdresse__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__Evenement__IdTra__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__Evenement__IdTyp__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__Inscripti__IdEve__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__Inscripti__IdUse__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__PaiementU__IdIns__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__PlanningU__IdIns__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__PaiementU__IdPai__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__PaiementU__IdUse__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__PlanningU__IdPla__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__Users__IdRole__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionEvenementModel.FK__Users__IdTranche__398D8EEE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

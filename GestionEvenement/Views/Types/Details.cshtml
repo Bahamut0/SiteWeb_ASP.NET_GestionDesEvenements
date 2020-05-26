@@ -1,0 +1,23 @@
+﻿@model GestionEvenement.Models.Type
+
+<h2 class="text-center">Infos supplémentaires</h2>
+
+<div>
+    <h4>Type</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Libelle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Retour sur la liste", "Index")
+</p>
+

@@ -1,0 +1,38 @@
+﻿@model GestionEvenement.Models.TrancheAge
+
+
+<h2 class="text-center">Détails</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Libelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgeMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgeMax)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Liste des tranche d'âge", "Index")
+</p>

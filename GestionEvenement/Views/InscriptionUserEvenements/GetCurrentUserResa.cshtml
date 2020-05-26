@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GestionEvenement.Models.InscriptionUserEvenement>
+
+    <h2 class="text-center text-capitalize">Mes réservations</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateResa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remarque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evenement.Libelle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.Nom)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateResa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remarque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evenement.Libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Users.Nom)
+            </td>
+            <td>
+                @Html.ActionLink("Modifier", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id=item.Id }) |
+
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿
+
+<div class="navbar navbar-expand-lg  navbar-dark bg-primary mb-4">
+    <div class="container">
+        <a href="@Url.Action("", "")" class="navbar-brand"><img src='~/Image/logo/logoEtNomWhite.png' height='70' width='60' /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown show">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download" aria-expanded="true">Accueil <span class="caret"></span></a>
+                    <div class="dropdown-menu " aria-labelledby="download">
+
+                        @*@Html.ActionLink("Accueil", "Index",  htmlAttributes: new { @class = "dropdown-item" })*@
+                        @Html.ActionLink("Accueil", "Index", new { controller = "Home" }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("À propos de", "About", new { controller = "Home" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("À Contact de", "Contact", new { controller = "Home" }, new { @class = "dropdown-item" })
+
+                    </div>
+                </li>
+
+                <li class="nav-item "> @Html.ActionLink("Evénements", "Index", new { controller = "Evenements" }, new { @class = "nav-link" }) </li>
+
+                @*<li class="nav-item dropdown show">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download" aria-expanded="true">Planning <span class="caret"></span></a>
+                        <div class="dropdown-menu " aria-labelledby="download">
+
+                            @Html.ActionLink("Liste", "Index", new { controller = "Plannings" }, htmlAttributes: new { @class = "dropdown-item" })
+                            @Html.ActionLink("Nouveau", "Create", new { controller = "Plannings" }, htmlAttributes: new { @class = "dropdown-item" })
+                        </div>
+                    </li>*@
+
+            </ul>
+            @Html.Partial("_LoginPartial")
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model GestionEvenement.Models.Evenement
+
+    <h2 class="text-center text-capitalize my-4">Infos supplémentaires</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card" style="width: 30rem;">
+                <img src="@Url.Content(Model.Image)" alt="Ma photo" class="card-img-top" width="300" height="280" />
+
+                <div class="card-body text-center">
+                    <h5 class="card-title"> @Html.DisplayFor(model => model.Libelle)</h5>
+
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Description : @Html.DisplayFor(model => model.Description)</li>
+                    <li class="list-group-item">Adresse :  @Html.DisplayFor(model => model.Adresse.Numero)  @Html.DisplayFor(model => model.Adresse.Rue)  @Html.DisplayFor(model => model.Adresse.CodePostal)  @Html.DisplayFor(model => model.Adresse.Ville) </li>
+                    <li class="list-group-item">Tranche d'âge de l'activité :  @Html.DisplayFor(model => model.TrancheAge.Libelle) </li>
+                    <li class="list-group-item">Catégorie de l'événement :   @Html.DisplayFor(model => model.Type.Libelle)</li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" style="width: 30rem;">
+                <img src="~/Image/calendrier.jpg" alt="Ma photo" class="card-img-top" width="300" height="280" />               
+                <div class="card-body">
+                    <h5 class="card-title text-center"> Mais c'est quand ?</h5>
+
+                </div>
+                <ul class="list-group list-group-flush">
+
+                   
+                    <li class="list-group-item">Date de début : @Html.DisplayFor(model => model.DateDebut)</li>
+                    <li class="list-group-item">Date de fin : @Html.DisplayFor(model => model.DateFin)</li>
+                    <li class="list-group-item">Date limite d'inscription : @Html.DisplayFor(model => model.DateLimiteInscription)</li>
+                    <li class="list-group-item">Durée : @Html.DisplayFor(model => model.Duree)</li>
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+        
+        <p class="my-4 text-center">
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Administrateur"))
+                {
+                     @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) 
+                }
+                
+            }
+          
+            @Html.ActionLink("Liste des événements", "Index")
+        </p>
+

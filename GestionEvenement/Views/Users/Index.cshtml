@@ -1,0 +1,86 @@
+﻿@model IEnumerable<GestionEvenement.Models.Users>
+
+    <h2 class="text-center">Liste des Adhérents</h2>
+
+    <p>
+        @Html.ActionLink("S'inscrire", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateNaissance)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Adresse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdhesion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrancheAge.Libelle)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+                <tr>
+
+
+                    <td><img src="@Url.Content(item.Photo)" width="80" height="100" alt="Photo" /></td>
+                    <td>
+                        @{if (item.Genre.Equals(true))
+                            {@Html.Label("Homme") }
+                        else
+                        { @Html.Label("Femme") }}
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Nom)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Prenom)</td>
+                    <td> @Html.DisplayFor(modelItem => item.DateNaissance)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adresse.Numero)
+                        @Html.DisplayFor(modelItem => item.Adresse.Rue)
+                        @Html.DisplayFor(modelItem => item.Adresse.CodePostal)
+                        @Html.DisplayFor(modelItem => item.Adresse.Ville)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Mail)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Role.Type)</td>
+                    <td> @Html.DisplayFor(modelItem => item.DateAdhesion)</td>
+                    <td>
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.Id })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
+                        @Html.ActionLink(
+                                   linkText: "Modifier l'adresse",
+                                   actionName: "Edit",
+                                   controllerName: "Adresses",
+                                   routeValues: new { id = item.IdAdresse },
+                                   htmlAttributes: null)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.TrancheAge.Libelle)</td>
+                </tr>
+           
+        }
+
+    </table>
+

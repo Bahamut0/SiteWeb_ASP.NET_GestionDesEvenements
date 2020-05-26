@@ -1,0 +1,52 @@
+﻿@model GestionEvenement.Models.InscriptionUserEvenement
+
+
+    <h2>On efface, c'est sûr</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DateResa)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DateResa)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Remarque)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Remarque)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Evenement.Libelle)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Evenement.Libelle)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Users.Nom)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Users.Nom)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+                @Html.ActionLink("Liste des réservations", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

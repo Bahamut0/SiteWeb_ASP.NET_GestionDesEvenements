@@ -1,0 +1,60 @@
+﻿@model GestionEvenement.Models.Adresse
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title class="text-center text-capitalize">Suppression d'Adresse</title>
+</head>
+<body>
+    <h3>Souhaitez vous vraiment supprimer ?</h3>
+    <div>
+        <h4>Adresse</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Numero)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Numero)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Rue)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Rue)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CodePostal)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CodePostal)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Ville)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Ville)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+                @Html.ActionLink("Liste des adresses", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

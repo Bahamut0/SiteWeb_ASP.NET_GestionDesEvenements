@@ -1,0 +1,304 @@
+﻿@model GestionEvenement.Models.Model.EvenementEM
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <h2 class="text-center text-capitalize">Modification</h2>
+    <h3>
+        @Html.ActionLink(
+               linkText: "Modifier l'adresse",
+               actionName: "Edit",
+               controllerName: "Adresses",
+               routeValues: new { id = Model.IdAdresse },
+               htmlAttributes: null)
+    </h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <input type="hidden" id="IdAdresse" name="IdAdresse" value="@Model.IdAdresse" />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Libelle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Libelle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Libelle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = " control-label custom-file-label col-md-2" })
+            <div class="col-md-10 " custom-file"">
+                <input type="file" name="Image" id=" inputImageEvent" class="custom-file-input"
+                       onchange="document.getElementById('imgEvent').src=window.URL.createObjectURL(this.files[0])" required />
+                <img id="imgEvent" src="#" width="80" height="100" alt="Photo" />
+            </div>
+        </div>*@
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateDebut, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DateDebut, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateDebut, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateLimiteInscription, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DateLimiteInscription, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateLimiteInscription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateFin, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DateFin, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateFin, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Duree, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Duree, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Duree, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdType, "IdType", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.DropDownList("IdType", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IdType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdTrancheAge, "IdTrancheAge", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.DropDownList("IdTrancheAge", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IdTrancheAge, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        @*<div class="row">*@
+            <!--Numero de rue  -->
+            @*<div class="form-group col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Adresse.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Adresse.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Adresse.Numero, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+            <!-- Rue  -->
+            @*<div class="form-group col-md-9">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Adresse.Rue, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Adresse.Rue, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Adresse.Rue, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">*@
+            <!-- Code Postal  -->
+
+            @*<div class="form-group col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Adresse.CodePostal, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Adresse.CodePostal, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Adresse.CodePostal, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+            <!-- Ville  -->
+            @*<div class="form-group col-md-9">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Adresse.Ville, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Adresse.Ville, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Adresse.Ville, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = " control-label custom-file-label col-md-2" })
+            <div class="col-md-12 " custom-file"">
+                <input type="file" name="Image"
+                       accept="image/*" onchange="loadFile(event)" required />
+                <img id="imageEventEdit" src="@Model.Image" width="100" height="100" alt="Photo" class="img-thumbnail" />
+            </div>
+        </div>
+        <!--Ancienne version-->
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Libelle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Libelle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Libelle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <!--en commentaire-->
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="Image"
+                       onchange="document.getElementById('imageEventEdit').src=window.URL.createObjectURL(this.files[0])" required />
+                <img id="imageEventEdit" src="@Url.Content(Model.Image)" width="100" height="100" alt="Image" />
+
+            </div>
+        </div>*@
+        <!--fin du commentaire-->
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="Image" id="inputFileEditEvent"
+                       value=" @Html.DisplayFor(model =>model.Image)"
+                       accept="image/*" onchange="loadFileEdit(event)" />
+                <img id="imageEventEdit" src="@Url.Content(Model.Image)" width="100" height="100" alt="Image" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateDebut, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateDebut, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateDebut, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateFin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateFin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateFin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Duree, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Duree, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Duree, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateLimiteInscription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateLimiteInscription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateLimiteInscription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdTrancheAge, "IdTrancheAge", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdTrancheAge", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdTrancheAge, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdType, "IdType", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdType", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdType, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <!--en commentaire-->
+        @*
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdAdresse, "IdAdresse", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdAdresse", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdAdresse, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <!--fin du commentaire-->
+
+        <div class="form-group">
+            <div class="col-md-12 my-3 text-center">
+                <input type="submit" value="Modifier" class="btn btn-outline-primary" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink("Liste des événements", "Index")
+    </div>
+    <script>
+        @*let imageEventEdit = document.getElementById('imageEventEdit');
+        let inputFileEditEvent = document.getElementById('inputFileEditEvent');
+        if (inputFileEditEvent != null && inputFileEditEvent != 'undefined') {
+           // console.log(inputFileEditEvent.src);
+            console.log(inputFileEditEvent.nodeValue);
+
+            if (inputFileEditEvent.nodeValue == null) {
+
+                inputFileEditEvent.nodeValue=@Model.Image;
+                console.log(inputFileEditEvent.nodeValue);
+
+            }
+
+        }*@
+        var loadFileEdit = function (event) {
+            var output = document.getElementById('imageEventEdit');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src);
+            }
+        };
+    </script>
+

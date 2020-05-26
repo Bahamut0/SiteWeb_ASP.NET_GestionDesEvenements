@@ -1,0 +1,88 @@
+﻿@model GestionEvenement.Models.Users
+
+
+<h2 class="text-center">Informations suplémentaires</h2>
+<hr />
+<br />
+
+
+<div>
+  
+        <div class="container">         
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="@Url.Content(Model.Photo)"  alt="Ma photo" class="card-img-top" width="300" height="280"/>
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">Controle d'identité</h5>
+
+                        </div>
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item">
+                                @{if (Model.Genre.Equals(true))
+                                    {@Html.Label("Mr") }
+                                else
+                                { @Html.Label("Mme") }} 
+                                @Html.DisplayFor(model => model.Prenom)  @Html.DisplayFor(model => model.Nom)
+                            </li>
+                            <li class="list-group-item">  Né le : @Html.DisplayFor(model => model.DateNaissance)</li>
+                            <li class="list-group-item">  Inscrit le :  @Html.DisplayFor(model => model.DateAdhesion)</li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="~/Image/plan_adresse.jpg" width="300" height="280" class="card-img-top" alt="Image d'un plan"/>
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">Contact</h5>                           
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Email : @Html.DisplayFor(model => model.Mail)</li>
+                            <li class="list-group-item">
+                                Adresse :
+                                @Html.DisplayFor(modelItem => modelItem.Adresse.Numero)
+                                @Html.DisplayFor(modelItem => modelItem.Adresse.Rue)
+                                @Html.DisplayFor(modelItem => modelItem.Adresse.CodePostal)
+                                @Html.DisplayFor(modelItem => modelItem.Adresse.Ville)
+                            </li>
+                            <li class="list-group-item">Téléphone :  @Html.DisplayFor(model => model.Telephone)</li>
+                        </ul>                    
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="~/Image/events.jpg" width="300" height="280" class="card-img-top" alt="Image d'un événement"/>                     
+                        <div class="card-body">
+                            <h5 class="card-title">Mes activités</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item">Evénement : Fabrication de Savon</li>
+                            <li class="list-group-item">Evénement : Spectacle de marionnette</li>
+                            <li class="list-group-item">Evénement : Partie de foot</li>                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+        <p class="mt-4 text-center">
+            @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id = Model.Id }) |
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Administrateur"))
+                {
+            <div>
+                @Html.ActionLink("Retourner sur la liste", "Index")
+            </div>
+                }
+            }
+          
+        </p>
+    </div>

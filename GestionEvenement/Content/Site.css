@@ -1,0 +1,84 @@
+﻿/*body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+/*.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}*/
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+/*.dl-horizontal dt {
+    white-space: normal;
+}*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+body {
+    font-family: 'Josefin Sans', sans-serif!important;
+}
+#header_home {
+    /*background-image: url('../Image/events.jpg');*/
+    background-image: url('../Image/header_home.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 350px;
+    background-position-y: center;
+    opacity: 0.6;
+    padding: 2rem;
+
+    
+}
+#header_home h1 {
+   font-size: 1.8rem!important;
+}
+#header_home h2 {
+    font-size: 3rem !important;
+    font-weight: bolder;
+}
+.cid-r7cLsaosoJ {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #efefef;
+
+}
+.no-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    /*padding-right: 0!important;
+    padding-left: 0!important;*/
+}
+.bg-whitesmoke{
+    background-color: whitesmoke!important;
+}
+
+.custom-file-label {
+    padding-right: 90px!important;
+    overflow: hidden!important;
+    text-overflow: ellipsis!important;
+}
+.row_file_label{
+    padding: 1.2%!important;
+}
+
+.white_no_text-decoration a {
+    color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 300px) {
+    #img_profile{
+        margin-left: auto;
+        margin-right:auto;
+    }
+}

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<GestionEvenement.Models.Evenement>
+
+
+    <div class="container">
+        <h2 class="text-center">Découvrez les événements du moments !</h2>
+        @*@if (Roles.IsUserInRole("Administrateur"))
+        {
+            @Html.ActionLink("Create New", "Create")
+        }*@
+        
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Libelle)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateDebut)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateFin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duree)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateLimiteInscription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adresse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TrancheAge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+               
+                <th></th>
+
+                    
+                </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Libelle)
+            </td>
+
+            <td>
+                @*@Html.DisplayFor(modelItem => item.affiche)*@
+                <img src="@Url.Content(item.Image)" width="100" height="100" alt="Image" class="img-thumbnail" />
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDebut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateLimiteInscription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresse.Numero)
+                @Html.DisplayFor(modelItem => item.Adresse.Rue)
+                @Html.DisplayFor(modelItem => item.Adresse.CodePostal)
+                @Html.DisplayFor(modelItem => item.Adresse.Ville)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrancheAge.Libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type.Libelle)
+            </td>
+           
+            <td>
+                @Html.ActionLink(
+                linkText: "Réserver",
+                actionName: "Create",
+                controllerName: "InscriptionUserEvenements",
+                routeValues: new { ViewBag.IdCurrentUser, IdEvenement = item.Id },
+                htmlAttributes: null) <br />
+
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) <br />
+                @Html.ActionLink(
+                                  linkText: "Modifier l'adresse",
+                                  actionName: "Edit",
+                                  controllerName: "Adresses",
+                                  routeValues: new { id = item.IdAdresse },
+                                  htmlAttributes: null) 
+
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Administrateur"))
+                    {
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.Id }) <br />
+
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
+                    }
+                }
+            </td>
+            
+        </tr>
+            }
+
+        </table>
+    </div>
+
